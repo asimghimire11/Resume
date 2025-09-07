@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Asim Ghimire - Resume</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      --dark-bg: #0f172a;
+      --card-bg: rgba(255, 255, 255, 0.95);
+      --text-primary: #1e293b;
+      --text-secondary: #64748b;
+      --border-color: rgba(100, 116, 139, 0.2);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--dark-bg);
+      background-image: 
+        radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(120, 200, 255, 0.2) 0%, transparent 50%);
+      color: var(--text-primary);
+      line-height: 1.6;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    /* Animated particles background */
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 50%;
+      animation: float 15s infinite linear;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(100vh) translateX(0px) rotate(0deg); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translateY(-100vh) translateX(100px) rotate(360deg); opacity: 0; }
+    }
+
+    /* Header */
+    header {
+      background: var(--card-bg);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--border-color);
+      border-radius: 24px;
+      padding: 3rem;
+      text-align: center;
+      margin-bottom: 2rem;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: var(--primary-gradient);
+      opacity: 0.05;
+      animation: shimmer 3s infinite;
+    }
+
+    @keyframes shimmer {
+      0% { left: -100%; }
+      50% { left: 100%; }
+      100% { left: 100%; }
+    }
+
+    .profile-img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      margin: 0 auto 2rem;
+      background: var(--primary-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      font-weight: bold;
+      color: white;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    header h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      background: var(--primary-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .contact-info {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin: 1.5rem 0;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.8rem 1.5rem;
+      background: var(--primary-gradient);
+      color: white;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 500;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .social-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Sections */
+    .section {
+      background: var(--card-bg);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--border-color);
+      border-radius: 24px;
+      padding: 2.5rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--primary-gradient);
+      border-radius: 24px 24px 0 0;
+    }
+
+    .section h2 {
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 2rem;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .section-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: var(--primary-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.2rem;
+    }
+
+    /* Experience cards */
+    .experience-item {
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 16px;
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+      border-left: 4px solid transparent;
+      background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), var(--accent-gradient);
+      background-origin: border-box;
+      background-clip: content-box, border-box;
+      transition: all 0.3s ease;
+    }
+
+    .experience-item:hover {
+      transform: translateX(10px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .experience-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .experience-company {
+      color: var(--text-secondary);
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+
+    .experience-item ul {
+      list-style: none;
+      margin-left: 1rem;
+    }
+
+    .experience-item li {
+      position: relative;
+      margin-bottom: 0.8rem;
+      padding-left: 1.5rem;
+      color: var(--text-secondary);
+    }
+
+    .experience-item li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: #667eea;
+      font-weight: bold;
+    }
+
+    /* Skills section */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .skill-category {
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 16px;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .skill-category h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      color: var(--text-primary);
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      justify-content: center;
+    }
+
+    .skill-tag {
+      background: var(--primary-gradient);
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border-radius: 25px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .skill-tag:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Leadership section */
+    .leadership-item {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 1.5rem;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 16px;
+      margin-bottom: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .leadership-item:hover {
+      background: rgba(255, 255, 255, 0.5);
+      transform: translateX(10px);
+    }
+
+    .leadership-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 16px;
+      background: var(--secondary-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    /* Scroll to top button */
+    .scroll-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 60px;
+      height: 60px;
+      background: var(--primary-gradient);
+      border: none;
+      border-radius: 50%;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+      opacity: 0;
+      transform: translateY(100px);
+      z-index: 1000;
+    }
+
+    .scroll-top.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .scroll-top:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+      .container {
+        padding: 1rem;
+      }
+      
+      header {
+        padding: 2rem;
+      }
+      
+      header h1 {
+        font-size: 2rem;
+      }
+      
+      .contact-info {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      .social-links {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Animations */
+    .fade-in {
+      animation: fadeIn 0.6s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .section:nth-child(even) {
+      animation-delay: 0.1s;
+    }
+
+    .section:nth-child(odd) {
+      animation-delay: 0.2s;
+    }
+  </style>
+</head>
+<body>
+  <div class="particles"></div>
+  
+  <div class="container">
+    <header class="fade-in">
+      <div class="profile-img">AG</div>
+      <h1>Asim Ghimire</h1>
+      <p style="font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 1rem;">Python Developer & ERP Specialist</p>
+      
+      <div class="contact-info">
+        <div class="contact-item">
+          <span>📧</span>
+          <span>ghimireasim3@gmail.com</span>
+        </div>
+        <div class="contact-item">
+          <span>📱</span>
+          <span>+977 9861973100</span>
+        </div>
+        <div class="contact-item">
+          <span>📍</span>
+          <span>Lalitpur-21, Lalitpur</span>
+        </div>
+      </div>
+      
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/asim-ghimire-68891829a/" target="_blank" class="social-link">
+          <span>💼</span> LinkedIn
+        </a>
+        <a href="https://github.com/asimghimire11" target="_blank" class="social-link">
+          <span>💻</span> GitHub
+        </a>
+        <a href="https://www.asimghimire.info.np" target="_blank" class="social-link">
+          <span>🌐</span> Portfolio
+        </a>
+      </div>
+    </header>
+
+    <div class="section fade-in">
+      <h2>
+        <div class="section-icon">👨‍💻</div>
+        Profile
+      </h2>
+      <p style="font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary);">
+        Computer Science graduate with hands-on experience in Python, object-oriented programming, and backend development. 
+        Proficient in the full software development lifecycle, version control with Git, and Agile workflows. 
+        Experienced in developing ERP modules using Odoo and building machine learning models with Python. 
+        Known for a strong problem-solving mindset and a passion for writing clean, efficient, and maintainable code.
+      </p>
+    </div>
+
+    <div class="section fade-in">
+      <h2>
+        <div class="section-icon">🎓</div>
+        Education
+      </h2>
+      <div class="experience-item">
+        <div class="experience-title">BSc. Computer Science and Information Technology</div>
+        <div class="experience-company">Tribhuvan University, Patan Multiple Campus — Kathmandu, Nepal</div>
+      </div>
+    </div>
+
+    <div class="section fade-in">
+      <h2>
+        <div class="section-icon">💼</div>
+        Experience
+      </h2>
+      
+      <div class="experience-item">
+        <div class="experience-title">Python Developer (Odoo)</div>
+        <div class="experience-company">Shangrila Informatics Pvt. Ltd. • Nov 2024 – Present</div>
+        <ul>
+          <li>Customized and developed ERP modules using Python and Odoo</li>
+          <li>Implemented backend logic and optimised existing modules</li>
+          <li>Collaborated with cross-functional teams and used Git for version control</li>
+        </ul>
+      </div>
+      
+      <div class="experience-item">
+        <div class="experience-title">Python Developer Intern (Odoo)</div>
+        <div class="experience-company">Shangrila Informatics Pvt. Ltd. • Aug 2024 – Nov 2024</div>
+        <ul>
+          <li>Supported backend development and module customisation using Odoo and Python</li>
+          <li>Gained hands-on experience with Odoo's architecture, ORM, and workflow</li>
+          <li>Contributed to team meetings and code reviews</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section fade-in">
+      <h2>
+        <div class="section-icon">🛠️</div>
+        Skills
+      </h2>
+      
+      <div class="skills-grid">
+        <div class="skill-category">
+          <h3>Languages</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">Java</span>
+            <span class="skill-tag">C</span>
+            <span class="skill-tag">C++</span>
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">SQL</span>
+          </div>
+        </div>
+        
+        <div class="skill-category">
+          <h3>Tools & Frameworks</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Git</span>
+            <span class="skill-tag">Django</span>
+            <span class="skill-tag">Odoo</span>
+            <span class="skill-tag">Pandas</span>
+            <span class="skill-tag">NumPy</span>
+            <span class="skill-tag">Matplotlib</span>
+            <span class="skill-tag">Scikit-learn</span>
+          </div>
+        </div>
+        
+        <div class="skill-category">
+          <h3>Concepts</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">OOP</span>
+            <span class="skill-tag">SDLC</span>
+            <span class="skill-tag">Agile</span>
+          </div>
+        </div>
+        
+        <div class="skill-category">
+          <h3>Soft Skills</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Problem Solving</span>
+            <span class="skill-tag">Communication</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section fade-in">
+      <h2>
+        <div class="section-icon">🏆</div>
+        Leadership & Involvement
+      </h2>
+      
+      <div class="leadership-item">
+        <div class="leadership-icon">T</div>
+        <div>
+          <div class="experience-title">Treasurer</div>
+          <div class="experience-company">Rotaract Club of Durbarmarg (RY 2025/26)</div>
+        </div>
+      </div>
+      
+      <div class="leadership-item">
+        <div class="leadership-icon">L</div>
+        <div>
+          <div class="experience-title">Learning Facilitator</div>
+          <div class="experience-company">Rotaract Club of Durbarmarg (RY 2024/25)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button class="scroll-top" onclick="scrollToTop()">↑</button>
+
+  <script>
+    // Create animated particles
+    function createParticles() {
+      const particles = document.querySelector('.particles');
+      for (let i = 0; i < 50; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.animationDelay = Math.random() * 15 + 's';
+        particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+        particles.appendChild(particle);
+      }
+    }
+
+    // Scroll to top functionality
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+
+    // Show/hide scroll to top button
+    window.addEventListener('scroll', function() {
+      const scrollTop = document.querySelector('.scroll-top');
+      if (window.pageYOffset > 300) {
+        scrollTop.classList.add('visible');
+      } else {
+        scrollTop.classList.remove('visible');
+      }
+    });
+
+    // Initialize animations and effects
+    document.addEventListener('DOMContentLoaded', function() {
+      createParticles();
+      
+      // Add stagger animation to sections
+      const sections = document.querySelectorAll('.section');
+      sections.forEach((section, index) => {
+        section.style.animationDelay = (index * 0.1) + 's';
+      });
+    });
+
+    // Add smooth reveal animation on scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Observe all sections
+    document.querySelectorAll('.section').forEach(section => {
+      section.style.opacity = '0';
+      section.style.transform = 'translateY(30px)';
+      section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(section);
+    });
+  </script>
+</body>
+</html>
